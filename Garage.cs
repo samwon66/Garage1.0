@@ -6,7 +6,7 @@ namespace Garage1._0
     internal class Garage<T> : IEnumerable<T> where T : Vehicle
     {
         private T[] vehicles;
-        public int Capacity {  get; set; }
+        public int ParkingSlot {  get; set; }
         public int CountVehicle {  get; set; }
 
         public IEnumerator<T> GetEnumerator()
