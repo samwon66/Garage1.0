@@ -22,5 +22,12 @@ namespace Garage1._0
             Boat boat1 = new Boat("white", "fhj723", 2.1, 3, 7.8, 2);
             Airplane airplane1 = new Airplane("silver", "koe034", 2.4, 3, 4, 1, 6.1);
         }
+
+        /// <summary>
+        /// Fill the garage with vehicle.
+        /// </summary>
+        public void FillTheGarage() { }
+
+        
     }
 }
