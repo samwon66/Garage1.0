@@ -18,24 +18,15 @@
         }
 
         /// <summary>
-        /// Get all the data of a vehicle
+        /// Get the chosen data of a vehicle
         /// </summary>
         /// <param name="vehicle"></param>
-        /// <returns>a string of the data of vehicle</returns>
-        public string Data(Vehicle vehicle)
+        /// <returns>Type, Regnr and color of vehicle</returns>
+        public virtual string Data(Vehicle vehicle)
         {
-            return string.Empty;
+            return $"******************\nType: {vehicle.GetType().Name}\nRegNr: {vehicle.RegNr}\nColor: {vehicle.Color}\n******************";
         }
 
-        /// <summary>
-        /// Get the registration number of the vhicle
-        /// </summary>
-        /// <param name="vehicle"></param>
-        /// <returns>registration number</returns>
-        public string GetRegNr(Vehicle vehicle)
-        {
-            return string.Empty;
-        }
-
+        
     }
 }

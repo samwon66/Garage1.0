@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Garage1._0.Vehicles;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,5 +13,8 @@ namespace Garage1._0
     /// </summary>
     internal class Manager
     {
+        
+        
+        
     }
 }

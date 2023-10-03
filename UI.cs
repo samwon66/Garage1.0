@@ -11,5 +11,18 @@ namespace Garage1._0
     /// </summary>
     internal class UI
     {
+        public void Print(string message) 
+        {  
+            Console.WriteLine(message); 
+        }
+        public string Read(string input) 
+        { 
+            if (input == null)
+            {
+                return $"You must entered some input.";
+            }
+            else 
+               return Console.ReadLine(); 
+        }
     }
 }
