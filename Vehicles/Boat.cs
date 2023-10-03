@@ -2,7 +2,7 @@
 {
     internal class Boat : Vehicle
     {
-        public int Length { get; set; }
-        public Boat(string color, int regNr, int weight, int wheel, int length, int parkingSlot):base(color, regNr, weight, wheel, parkingSlot) => Length = length;
+        public double Length { get; set; }
+        public Boat(string color, string regNr, double weight, int wheel, double length, int parkingSlot):base(color, regNr, weight, wheel, parkingSlot) => Length = length;
     }
 }

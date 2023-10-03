@@ -3,12 +3,12 @@
     internal class Vehicle
     {
         public string Color { get; set; }
-        public int RegNr { get; set; }
-        public int Weight { get; set; }
+        public string RegNr { get; set; }
+        public double Weight { get; set; }
         public int Wheel { get; set; }
         public int ParkingSlot { get; set; }
 
-        public Vehicle(string color, int regNr, int weight, int wheel, int parkingSlot)
+        public Vehicle(string color, string regNr, double weight, int wheel, int parkingSlot)
         {
             Color = color;
             RegNr = regNr;
@@ -16,6 +16,13 @@
             Wheel = wheel;
             ParkingSlot = parkingSlot;
         }
+
+        public string Data(Vehicle vehicle)
+        {
+            return string.Empty;
+        }
+
+        public 
 
     }
 }

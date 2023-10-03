@@ -3,9 +3,9 @@
     internal class Airplane : Vehicle
     {
         public int NumberOfEngines { get; set; }
-        public int Length { get; set; }
+        public double Length { get; set; }
 
-        public Airplane(string color, int regNr, int weight, int wheel, int parkingSlot, int numberOfEngines, int length) : base(color, regNr, weight, wheel, parkingSlot)
+        public Airplane(string color, string regNr, double weight, int wheel, int parkingSlot, int numberOfEngines, double length) : base(color, regNr, weight, wheel, parkingSlot)
         {
             NumberOfEngines = numberOfEngines;
             Length = length;
