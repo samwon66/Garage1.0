@@ -7,7 +7,7 @@
         public int Weight { get; set; }
         public int Wheel { get; set; }
 
-        public Vehicle(string color, int regNr, int weight, int wheel) 
+        public Vehicle(string color, int regNr, int weight, int wheel)
         {
             Color = color;
             RegNr = regNr;

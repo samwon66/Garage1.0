@@ -1,16 +1,13 @@
 ﻿using Garage1._0.Vehicles;
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Garage1._0
 {
     internal class Garage<T> : IEnumerable<T> where T : Vehicle
     {
+        private T[] vehicles;
         public int Capacity {  get; set; }
+        public int CountVehicle {  get; set; }
 
         public IEnumerator<T> GetEnumerator()
         {
