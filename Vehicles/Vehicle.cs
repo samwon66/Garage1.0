@@ -1,6 +1,6 @@
 ﻿namespace Garage1._0.Vehicles
 {
-    internal abstract class Vehicle
+    internal class Vehicle
     {
         public string Color { get; set; }
         public int RegNr { get; set; }
