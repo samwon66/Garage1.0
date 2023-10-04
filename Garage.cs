@@ -13,12 +13,16 @@ namespace Garage1._0
         public Garage(int parkingSlot) => ParkingSlot = parkingSlot;
         public IEnumerator<T> GetEnumerator()
         {
-            throw new NotImplementedException();
+            foreach (var v in vehicles)
+            {  
+                if (v != null)
+                    yield return v; 
+            }
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return this.GetEnumerator();
         }
     }
 }

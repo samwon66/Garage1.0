@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Garage1._0
+namespace Garage1._0.UI
 {
     internal interface IUI
     {
