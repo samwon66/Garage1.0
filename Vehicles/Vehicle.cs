@@ -17,16 +17,12 @@
             ParkingSlot = parkingSlot;
         }
 
-        /// <summary>
-        /// Get the chosen data of a vehicle
-        /// </summary>
-        /// <param name="vehicle"></param>
-        /// <returns>Type, Regnr and color of vehicle</returns>
-        public virtual string Data(Vehicle vehicle)
+        public override string ToString()
         {
-            return $"******************\nType: {vehicle.GetType().Name}\nRegNr: {vehicle.RegNr}\nColor: {vehicle.Color}\n******************";
+            return $"RegNumber: {RegNr}, Color: {Color}, Weigh: {Weight}, Wheel: {Wheel}, Parkingslot: {ParkingSlot}";
         }
 
-        
+
+
     }
 }

@@ -10,5 +10,10 @@
             Length = length;
         }
 
+        public override string ToString()
+        {
+            return base.ToString() + $"Length: {Length}, Number of seats: {NumberOfSeats}";
+        }
+
     }
 }

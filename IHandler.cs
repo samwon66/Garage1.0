@@ -14,6 +14,7 @@ namespace Garage1._0
         public void VehicleCheckOut() { }
 
         public void ListAllVehicle() { }
+        public void ListAmountOfEachTypeVehicle() { }
 
         public void FindVehicle() { }
 
