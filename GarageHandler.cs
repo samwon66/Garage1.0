@@ -12,6 +12,8 @@ namespace Garage1._0
     /// </summary>
     internal class GarageHandler
     {
+        Garage<Vehicle> garage = new(50);
+        
         public void InitVehicles()
         {
             Car car1 = new Car("white", "nbc432", 1.5, 4, 1, "gas");

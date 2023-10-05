@@ -13,6 +13,11 @@ namespace Garage1._0.UI
             throw new NotImplementedException();
         }
 
+        public string GetInput(string input)
+        {
+            throw new NotImplementedException();
+        }
+
         public void PrintMessage(string message)
         {
             throw new NotImplementedException();
