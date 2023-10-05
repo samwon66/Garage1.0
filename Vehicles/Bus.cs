@@ -4,7 +4,7 @@
     {
         public int NumberOfSeats { get; set; }
         public double Length { get; set; }
-        public Bus(string color, string regNr, double weight, int wheel, int parkingSlot, int numberOfSeats, double length ) : base(color, regNr, weight, wheel, parkingSlot)
+        public Bus(string color, string regNr, double weight, int wheel, int numberOfSeats, double length ) : base(color, regNr, weight, wheel)
         {
             NumberOfSeats = numberOfSeats;
             Length = length;

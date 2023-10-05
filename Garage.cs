@@ -8,10 +8,9 @@ namespace Garage1._0
         private T[]? vehicles = null;
         
         public int Capacity { get { return vehicles.Length; } }
-        public int ParkingSlot { get; set; }
         public int CountVehicle { get; private set; } = 0;
-
-        public Garage(int parkingSlot) => ParkingSlot = parkingSlot;
+        public bool IsFull => CountVehicle >= Capacity;
+        
         public IEnumerator<T> GetEnumerator()
         {
             foreach (var v in vehicles)
