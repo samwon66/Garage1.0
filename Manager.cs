@@ -23,6 +23,7 @@ namespace Garage1._0
                 switch(choice)
                 {
                     case 1:
+                        CreatGarage();
                         break;
 
                     case 2:
@@ -53,10 +54,9 @@ namespace Garage1._0
              ui.Clear();
              ui.PrintMessage("Welcome to my garage!");
              ui.PrintMessage("Navigate through the menu by entering the number of choice.");
-             ui.PrintMessage($"There is  vehicles in the garage now and the capacity of the garage is .");
-             ui.PrintMessage("1. Change the capacity of the garage.");
+             ui.PrintMessage("1. Create a new garage.");
              ui.PrintMessage("2. Add a vehicle to the garage.");
-             ui.PrintMessage("3. Remove a vechicle from the garage.");
+             ui.PrintMessage("3. Remove a vehicle from the garage.");
              ui.PrintMessage("4. List all the vehicle in the garage.");
              ui.PrintMessage("0. Quit");
              ui.Wait();
@@ -65,8 +65,11 @@ namespace Garage1._0
 
         private void CreatGarage()
         {
+            ui.PrintMessage("How many parkingslots does your new garage has?");
+            ui.Wait();
             int size = Convert.ToInt32(Console.ReadLine());
             GarageHandler handler = new GarageHandler(size);
+
         }
 
   

@@ -4,98 +4,45 @@ using System.ComponentModel;
 
 namespace Garage1._0
 {
-    internal class Garage<T> : IEnumerable<T> where T : IVehicle
+    public class Garage<T> : IEnumerable<T> where T : IVehicle
     {
-        private static int vehicleInGarage = 0;
-        private static int totalParkingslots;
-        private static int parkingslotsInUse = 0;
-        private static int freeParkingslots = totalParkingslots - parkingslotsInUse;
-        private static bool isFull = false;
-        private static T[] garageArray = new T[totalParkingslots];
+        private T[] vehicles;
 
-        public int VehicleInGarage { get; set; }
-        public int TotalParkingslots { get; set; }
-        public int ParkingslotsInUse { get ; set; }
-        public int FreeParkingslots { get; set; }
-        public bool IsFull 
+        public Garage(int capacity)
         {
-            get {  return isFull; } 
-            set {
-                if (FreeParkingslots == 0)
-                {
-                    IsFull = true;
-                }
-                else
-                {
-                    IsFull = false;
-                }
-            } 
+            vehicles = new T[capacity];
         }
 
-
-        public IEnumerator<T> GetEnumerator()
+        public void Park(T vehicle)
         {
-            foreach (var v in garageArray)
+            for (int i = 0; i < vehicles.Length; i++)
+            {
+                if (vehicles[i] == null)
+                {
+                    vehicles[i] = vehicle;
+                }
+            }
+        }
+
+        public void RemoveVehicle(string inputRegNr)
+        {
+            foreach (var v in vehicles)
+            {
+
+            }
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            return vehicles.GetEnumerator();
+        }
+
+        IEnumerator<T> IEnumerable<T>.GetEnumerator()
+        {
+            foreach (var v in vehicles)
             {
                 yield return v;
             }
         }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
-
-        public void AddVehicleToGarage() 
-        {
-            VehicleInGarage++;
-            ParkingslotsInUse++;
-        }
-
-        public void RemoveVrhicleFromGarage()
-        {
-            VehicleInGarage--;
-            ParkingslotsInUse--;
-        }
-
-        public void AllVehicleInGarage() 
-        {
-            Console.WriteLine($"There is {VehicleInGarage} in the garage.");
-            int index = 1;
-            foreach (IVehicle v in garageArray)
-            {
-                if (v != null)
-                {
-                    Console.WriteLine($"{index} - Type: {v.GetType().Name}, RegisterNumber: {v.RegNr}");
-                }
-                index++;
-            }
-        }
-
-        public void PopulateGarage(T vehicle)
-        {
-            if (!IsFull)
-            {
-                Console.WriteLine(FreeParkingslots);
-                garageArray[VehicleInGarage] = vehicle;
-                AddVehicleToGarage();
-            }
-            else
-            {
-                Console.WriteLine("Garage is full.");
-            }
-        }
-
-        //public bool GarageIsFull()
-        //{
-        //    if (FreeParkingslots == 0)
-        //    {
-        //        return IsFull = true;
-        //    }
-        //    else
-        //    {
-        //        return IsFull = false;
-        //    }
-        //}
     }
 }
