@@ -15,23 +15,28 @@ namespace Garage1._0.UI
 
         
 
-        public string GetInput(string input)
+        public string GetInputInString(string userInput)
         {
-            throw new NotImplementedException();
+            userInput = Console.ReadLine();
+            if(userInput == "" || userInput == " ")
+            {
+                PrintMessage("You must enter something.");
+            }
+            return userInput;
         }
 
-        public int GetInputByInt()
+        public int GetInputInInt(string input)
         {
-            //int userEnter;
-            //try
-            //{
-            //    if (userEnter != 0)
-            //    {
-            //        input = int.Parse(Console.ReadLine());
-            //    }
-            //}
-            //catch(Exception) { Console.WriteLine("Wrong input"); }
-            return 0;
+            bool isCorrect = false;
+            int inputInInteger;
+            do
+            {
+                //string answer = GetInputinString(input);
+                isCorrect = int.TryParse(GetInputInString(input), out inputInInteger);
+                if(!isCorrect ) { PrintMessage("Please enter a number."); }
+            }
+            while (!isCorrect);
+            return inputInInteger;
         }
 
         public void PrintMessage(string message)
