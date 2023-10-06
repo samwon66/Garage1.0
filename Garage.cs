@@ -72,6 +72,19 @@ namespace Garage1._0
             }
         }
 
+        public void PopulateGarage(T vehicle)
+        {
+            if (!IsFull)
+            {
+                Console.WriteLine(FreeParkingslots);
+                garageArray[VehicleInGarage] = vehicle;
+                AddVehicleToGarage();
+            }
+            else
+            {
+                Console.WriteLine("Garage is full.");
+            }
+        }
 
         //public bool GarageIsFull()
         //{
