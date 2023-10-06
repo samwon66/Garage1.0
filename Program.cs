@@ -7,7 +7,9 @@ namespace Garage1._0
         static void Main(string[] args)
         {
             
-            
+            Manager manager = new Manager();
+            manager.Run();
+
 
         }
     }

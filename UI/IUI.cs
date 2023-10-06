@@ -11,6 +11,8 @@ namespace Garage1._0.UI
         void PrintMessage(string message);
         void Clear();
         string GetInput(string input);
-
+        void Quit();
+        void Wait();
+        int GetInputByInt();
     }
 }
