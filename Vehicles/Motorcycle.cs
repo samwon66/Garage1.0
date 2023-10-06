@@ -3,7 +3,7 @@
     internal class Motorcycle : Vehicle
     {
         public double CylinderVolume { get; set; }
-        public Motorcycle(string color, string regNr, double weight, int wheel, double cylinderVolume) : base(color, regNr, weight, wheel)
+        public Motorcycle(string color, string regNr, int wheels, double cylinderVolume) : base(color, regNr, wheels)
         => CylinderVolume = cylinderVolume;
 
         public override string ToString()
