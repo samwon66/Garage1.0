@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Numerics;
 
 namespace Garage1._0
 {
@@ -63,7 +64,19 @@ namespace Garage1._0
 
         public bool RemoveVehicle(T vehicle)
         {
-            throw new NotImplementedException();
+            if (vehicle == null) return false;
+
+            for (int i =0; i < vehicles.Length; i++)
+            {
+                if ((IVehicle)vehicles[i] == (IVehicle)vehicle)
+                {
+                    vehicles[i] = default(T);
+                    nrOfParkedVehicles--;
+                    isEmpty = (nrOfParkedVehicles == 0);
+                    return true;
+                }
+            }
+            return false;
         }
 
         IEnumerator IEnumerable.GetEnumerator()
