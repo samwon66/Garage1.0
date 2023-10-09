@@ -23,7 +23,7 @@ namespace Garage1._0.UI
 
         public void PrintErrorMessage(string errorMessage)
         {
-            throw new NotImplementedException();
+            Console.WriteLine(errorMessage); ;
         }
 
         public void PrintMainMenu()
@@ -36,28 +36,18 @@ namespace Garage1._0.UI
                 "Q. Quit");
         }
 
-        public void PrintMessage(string Message)
+        public void PrintMessage(string message)
         {
-            throw new NotImplementedException();
-        }
-
-        public void PrintSetupMessage()
-        {
-            throw new NotImplementedException();
+            Console.WriteLine(message); ;
         }
 
         public void PrintVehicle(IVehicle vehicle)
         {
-            throw new NotImplementedException();
-        }
-
-        public string Prompt(string message)
-        {
-            Console.WriteLine(message);
-            return Console.ReadLine();
-
+            Console.WriteLine(vehicle.ToString()); ;
         }
 
         
+
+
     }
 }

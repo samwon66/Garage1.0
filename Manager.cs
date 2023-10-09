@@ -38,7 +38,7 @@ namespace Garage1._0
             string choice = GetMenuChoice();
             var menu = new Dictionary<string, Action>
             {
-                { "1", AddRandomVehicles }, 
+                { "1", FillGarageWithVehicles }, 
                 { "2", AddAVehicle },
                 { "3", RemoveAVehicle },
                 { "Q", Quit }
@@ -55,57 +55,55 @@ namespace Garage1._0
             throw new NotImplementedException();
         }
 
-        private void AddRandomVehicles()
+        private void FillGarageWithVehicles()
         {
-            ui.PrintMessage("\n Add a number of random vehicles.");
-            int nrOfVehicle = GetPopulationSize();
-            bool success = Populate(nrOfVehicle);
+            bool success = handler.PopulateGarage();
             if (success)
-                ui.PrintMessage($" {nrOfVehicle} vehicles added.");
+                ui.PrintMessage($" Some vehicles added.");
         }
 
-        private bool Populate(int nrOfVehicle)
-        {
-            int nrAdded;
-            nrAdded = handler.PopulateGarage(nrOfVehicle);
-            if (nrAdded < nrOfVehicle)
-            {
-                ui.PrintErrorMessage($" {nrAdded} vehicles added. Garage is full.");
-            }
-            return nrAdded == nrOfVehicle;
+        //private bool Populate(int nrOfVehicle)
+        //{
+        //    int nrAdded;
+        //    nrAdded = handler.PopulateGarage(nrOfVehicle);
+        //    if (nrAdded < nrOfVehicle)
+        //    {
+        //        ui.PrintErrorMessage($" {nrAdded} vehicles added. Garage is full.");
+        //    }
+        //    return nrAdded == nrOfVehicle;
 
-        }
+        //}
 
-        private int GetPopulationSize()
-        {
-            int size;
-            bool success;
-            string errMsg = "";
+        //private int GetPopulationSize()
+        //{
+        //    int size;
+        //    bool success;
+        //    string errMsg = "";
 
-            do
-            {
-                string input = ui.Prompt("How many vehicles? ");
-                success = int.TryParse(input, out size);
+        //    do
+        //    {
+        //        string input = ui.Prompt("How many vehicles? ");
+        //        success = int.TryParse(input, out size);
 
-                if (!success)
-                    errMsg = "Input must be a number";
-                if (success && (size == 0))
-                {
-                    errMsg = "Size must be greater than 0";
-                    success = false;
-                }
-                if (success && (size > handler.GarageCapacity))
-                {
-                    errMsg = $" Size must not be greater than garage capacity {handler.GarageCapacity}";
-                    success = false;
-                }
-                if (!success)
-                    ui.PrintErrorMessage("Wrong input " + errMsg);
-            }
-            while (!success);
+        //        if (!success)
+        //            errMsg = "Input must be a number";
+        //        if (success && (size == 0))
+        //        {
+        //            errMsg = "Size must be greater than 0";
+        //            success = false;
+        //        }
+        //        if (success && (size > handler.GarageCapacity))
+        //        {
+        //            errMsg = $" Size must not be greater than garage capacity {handler.GarageCapacity}";
+        //            success = false;
+        //        }
+        //        if (!success)
+        //            ui.PrintErrorMessage("Wrong input " + errMsg);
+        //    }
+        //    while (!success);
 
-            return size;
-        }
+        //    return size;
+        //}
 
         private void Quit()
         {

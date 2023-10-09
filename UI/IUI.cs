@@ -11,9 +11,7 @@ namespace Garage1._0.UI
     {
         string GetMenuKey();
         void PrintMainMenu();
-        void PrintSetupMessage();
         void Pause();
-        string Prompt(string message);
         void PrintErrorMessage(string errorMessage);
         void PrintMessage(string Message);
         void PrintVehicle(IVehicle vehicle);

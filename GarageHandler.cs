@@ -25,9 +25,11 @@ namespace Garage1._0
             garageCapacity = NrOfParkingSlots;
         }
 
-        internal int PopulateGarage(int nrOfVehicle)
+        internal bool PopulateGarage()
         {
-            throw new NotImplementedException();
+            return true;
         }
+
+        
     }
 }
