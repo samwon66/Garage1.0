@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Garage1._0.Vehicles;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,12 +9,12 @@ namespace Garage1._0.UI
 {
     internal interface IUI
     {
-        void PrintMessage(string message);
-        void Clear();
-        string GetInputInString(string input);
-        int GetInputInInt(string input);
-        void Quit();
-        void Wait();
-        
+        void PrintMainMenu();
+        void PrintSetupMessage();
+        void Pause();
+        string Prompt(string Message);
+        void PrintErrorMessage(string errorMessage);
+        void PrintMessage(string Message);
+        void PrintVehicle(IVehicle vehicle);
     }
 }

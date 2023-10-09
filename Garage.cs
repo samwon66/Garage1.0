@@ -1,48 +1,76 @@
 ﻿using Garage1._0.Vehicles;
 using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace Garage1._0
 {
-    public class Garage<T> : IEnumerable<T> where T : IVehicle
+    public class Garage<T> : IGarage<T> where T : IVehicle
     {
         private T[] vehicles;
-
-        public Garage(int capacity)
+        private int capacity;
+        private int nrOfParkedVehicles;
+        private bool isEmpty;
+        private bool isFull;
+        
+        public int Capacity 
         {
-            vehicles = new T[capacity];
+            get { return capacity; }
         }
 
-        public void Park(T vehicle)
+        public int NrOfParkedVehicles 
         {
+            get { return nrOfParkedVehicles; }
+        }
+
+        public bool IsEmpty { get { return isEmpty; } }
+
+        public bool IsFull { get { return isFull; } }
+
+        public Garage(int Capacity)
+        {
+            capacity = Capacity;
+            vehicles = new T[capacity];
+            isEmpty = true;
+            isFull = false;
+        }
+
+        public bool AddVehicle(T vehicle)
+        {
+            if (vehicle == null) return false; 
+            else
+               foreach (var v in vehicles) 
+                    if ((IVehicle)v == (IVehicle)vehicle) return false; 
+               
             for (int i = 0; i < vehicles.Length; i++)
             {
                 if (vehicles[i] == null)
                 {
                     vehicles[i] = vehicle;
+                    nrOfParkedVehicles++;
+                    isFull = (nrOfParkedVehicles == capacity);
+                    return true;
                 }
             }
+
+            return false;
         }
 
-        public void RemoveVehicle(string inputRegNr)
+        public IEnumerator<T> GetEnumerator()
         {
-            foreach (var v in vehicles)
-            {
-
-            }
+            throw new NotImplementedException();
         }
 
-        public IEnumerator GetEnumerator()
+        public bool RemoveVehicle(T vehicle)
         {
-            return vehicles.GetEnumerator();
+            throw new NotImplementedException();
         }
 
-        IEnumerator<T> IEnumerable<T>.GetEnumerator()
+        IEnumerator IEnumerable.GetEnumerator()
         {
-            foreach (var v in vehicles)
-            {
-                yield return v;
-            }
+            throw new NotImplementedException();
         }
     }
+
+
 }
