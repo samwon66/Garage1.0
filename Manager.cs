@@ -11,9 +11,24 @@ namespace Garage1._0
     
     internal class Manager
     {
-        
+        private IUI ui;
+        private bool isRunning = true;
 
 
+        internal Manager(IUI consoleUI)
+        {
+            ui = consoleUI;
+        }
+
+        internal void Run()
+        {
+            do
+            {
+                ui.PrintMainMenu();
+                if(isRunning) ui.Pause();
+            }
+            while(isRunning);
+        }
         
 
   

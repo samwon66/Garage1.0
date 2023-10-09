@@ -10,21 +10,19 @@ namespace Garage1._0
     
     internal class GarageHandler
     {
-        private Garage<Vehicle> garage;
+        private IGarage<IVehicle> garage;
+        private int garageCapacity;
 
-        public GarageHandler(int capacity)
-        {
-            garage = new Garage<Vehicle>(capacity);
+        public int GarageCapacity 
+        { 
+            get { return garageCapacity; }
+            set { garageCapacity = value; }
         }
 
-        internal void AddVehicle(Vehicle vehicle)
+        public GarageHandler(int NrOfParkingSlots) 
         {
-            garage.Park(vehicle);
-        }
-
-        internal void RemoveVehicle(string regNr)
-        {
-            garage.RemoveVehicle(regNr);
+            garage = new Garage<IVehicle>(NrOfParkingSlots);
+            garageCapacity = NrOfParkingSlots;
         }
     }
 }

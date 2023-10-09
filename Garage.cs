@@ -59,7 +59,11 @@ namespace Garage1._0
 
         public IEnumerator<T> GetEnumerator()
         {
-            throw new NotImplementedException();
+            foreach (T vehicle in vehicles)
+            {
+                if (vehicle != null)
+                    yield return vehicle;
+            }
         }
 
         public bool RemoveVehicle(T vehicle)
@@ -81,7 +85,7 @@ namespace Garage1._0
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return GetEnumerator();
         }
     }
 

@@ -9,6 +9,7 @@ namespace Garage1._0.UI
 {
     internal interface IUI
     {
+        string GetMenuKey();
         void PrintMainMenu();
         void PrintSetupMessage();
         void Pause();

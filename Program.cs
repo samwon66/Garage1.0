@@ -1,4 +1,5 @@
-﻿using Garage1._0.Vehicles;
+﻿using Garage1._0.UI;
+using Garage1._0.Vehicles;
 
 namespace Garage1._0
 {
@@ -7,7 +8,8 @@ namespace Garage1._0
         static void Main(string[] args)
         {
             
-            Manager manager = new Manager();
+            ConsoleUI consoleUI = new ConsoleUI();
+            Manager manager = new Manager(consoleUI);
             manager.Run();
 
 
