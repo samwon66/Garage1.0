@@ -24,5 +24,10 @@ namespace Garage1._0
             garage = new Garage<IVehicle>(NrOfParkingSlots);
             garageCapacity = NrOfParkingSlots;
         }
+
+        internal int PopulateGarage(int nrOfVehicle)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

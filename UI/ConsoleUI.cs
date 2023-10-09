@@ -51,9 +51,13 @@ namespace Garage1._0.UI
             throw new NotImplementedException();
         }
 
-        public string Prompt(string Message)
+        public string Prompt(string message)
         {
-            throw new NotImplementedException();
+            Console.WriteLine(message);
+            return Console.ReadLine();
+
         }
+
+        
     }
 }

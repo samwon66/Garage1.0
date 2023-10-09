@@ -13,7 +13,7 @@ namespace Garage1._0.UI
         void PrintMainMenu();
         void PrintSetupMessage();
         void Pause();
-        string Prompt(string Message);
+        string Prompt(string message);
         void PrintErrorMessage(string errorMessage);
         void PrintMessage(string Message);
         void PrintVehicle(IVehicle vehicle);
