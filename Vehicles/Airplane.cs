@@ -2,16 +2,17 @@
 {
     internal class Airplane : Vehicle
     {
-        public int NumberOfEngines { get; set; }
+        private uint nrOfEngines;
 
-        public Airplane(string color, string regNr, int wheels, int numberOfEngines) : base(color, regNr, wheels)
+        public uint NrOfEngines
         {
-            NumberOfEngines = numberOfEngines;
+            get { return nrOfEngines; }
+            set { nrOfEngines = value; }
         }
 
-        public override string ToString()
+        internal Airplane(string RegNum, uint NrOfwheels, uint NrOfEngines) : base(RegNum, NrOfwheels)
         {
-            return base.ToString() + $"Number of engines: {NumberOfEngines}";
+            nrOfEngines = NrOfEngines;
         }
     }
 }

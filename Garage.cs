@@ -6,50 +6,71 @@ using System.Numerics;
 
 namespace Garage1._0
 {
-    public class Garage<T> : IGarage<T> where T : IVehicle
+    public class Garage<T> : /*IEnumerable<T>,*/ IGarage<T> where T : IVehicle
     {
         private T[] vehicles;
-        private int capacity;
-        private int nrOfParkedVehicles;
+        private uint capacity;
+        private uint nrOfParkedVehicles;
         private bool isEmpty;
         private bool isFull;
-        
-        public int Capacity 
+
+        public uint Capacity
         {
             get { return capacity; }
         }
-
-        public int NrOfParkedVehicles 
+        public uint NrOfParkedVehicles
         {
             get { return nrOfParkedVehicles; }
         }
+        public bool IsEmpty
+        {
+            get { return isEmpty; }
+        }
+        public bool IsFull
+        {
+            get { return isFull; }
+        }
 
-        public bool IsEmpty { get { return isEmpty; } }
-
-        public bool IsFull { get { return isFull; } }
-
-        public Garage(int Capacity)
+        public Garage(uint Capacity)
         {
             capacity = Capacity;
-            vehicles = new T[capacity];
+            vehicles = new T[Capacity];
             isEmpty = true;
             isFull = false;
         }
 
         public bool AddVehicle(T vehicle)
         {
-            if (vehicle == null) return false; 
+            if (vehicle == null) return false;
             else
-               foreach (var v in vehicles) 
-                    if ((IVehicle)v == (IVehicle)vehicle) return false; 
-               
+                foreach (var v in vehicles)
+                    if ((IVehicle)v == (IVehicle)vehicle) return false;
+
             for (int i = 0; i < vehicles.Length; i++)
             {
-                if (vehicles[i] == null)
+                if (vehicles[i] == null)         
                 {
                     vehicles[i] = vehicle;
                     nrOfParkedVehicles++;
                     isFull = (nrOfParkedVehicles == capacity);
+                    return true;
+                }
+            }
+
+            return false;                       
+        }
+
+        public bool RemoveVehicle(T vehicle)
+        {
+            if (vehicle == null) return false;
+
+            for (int i = 0; i < vehicles.Length; i++)
+            {
+                if ((IVehicle)vehicles[i] == (IVehicle)vehicle)
+                {
+                    vehicles[i] = default(T);
+                    nrOfParkedVehicles--;
+                    isEmpty = (nrOfParkedVehicles == 0);
                     return true;
                 }
             }
@@ -61,26 +82,9 @@ namespace Garage1._0
         {
             foreach (T vehicle in vehicles)
             {
-                if (vehicle != null)
+                if (vehicle != null)             
                     yield return vehicle;
             }
-        }
-
-        public bool RemoveVehicle(T vehicle)
-        {
-            if (vehicle == null) return false;
-
-            for (int i =0; i < vehicles.Length; i++)
-            {
-                if ((IVehicle)vehicles[i] == (IVehicle)vehicle)
-                {
-                    vehicles[i] = default(T);
-                    nrOfParkedVehicles--;
-                    isEmpty = (nrOfParkedVehicles == 0);
-                    return true;
-                }
-            }
-            return false;
         }
 
         IEnumerator IEnumerable.GetEnumerator()

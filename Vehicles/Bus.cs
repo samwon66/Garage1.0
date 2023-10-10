@@ -2,17 +2,18 @@
 {
     internal class Bus : Vehicle
     {
-        public int NumberOfSeats { get; set; }
+        private uint nrOfSeats;
 
-        public Bus(string color, string regNr, double weight, int wheels, int numberOfSeats) : base(color, regNr, wheels)
+        public uint NrOfSeats
         {
-            NumberOfSeats = numberOfSeats;
+            get { return nrOfSeats; }
         }
 
-        public override string ToString()
+        internal Bus(string RegNum, uint NrOfwheels, uint NrOfSeats) : base(RegNum, NrOfwheels)
         {
-            return base.ToString() + $"Number of seats: {NumberOfSeats}";
+            nrOfSeats = NrOfSeats;
         }
+
 
     }
 }

@@ -9,12 +9,16 @@ namespace Garage1._0
 {
     internal interface IGarage<T> : IEnumerable<T> where T : IVehicle
     {
-        int Capacity { get; }
-        int NrOfParkedVehicles { get; }
+        public interface IGarage<T> : IEnumerable<T> where T : IVehicle
+        {
+            uint Capacity { get; }
+            uint NrOfParkedVehicles { get; }
 
-        //IEnumerable<T> GetEnumerator();
-        bool RemoveVehicle(T vehicle);
-        bool AddVehicle(T vehicle);
-        
+            IEnumerator<T> GetEnumerator();
+            bool RemoveVehicle(T vehicle);
+            bool AddVehicle(T vehicle);
+
+        }
+
     }
 }

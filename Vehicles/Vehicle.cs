@@ -2,21 +2,30 @@
 {
     internal class Vehicle : IVehicle
     {
-        public string Color { get; set; }
-        public string RegNr { get; set; }
-        public int Wheels { get; set; }
+        private string regnum;
+        private uint nrOfwheels;
+        private ConsoleColor colour;
 
-        public Vehicle(string color, string regNr, int wheels)
+        public string RegNum
         {
-            Color = color;
-            RegNr = regNr;
-            Wheels = wheels;
+            get { return regnum; }
+        }
+        public uint NrOfwheels
+        {
+            get => nrOfwheels;
+        }
+        public ConsoleColor Colour
+        {
+            get { return colour; }
+            set { colour = value; }
         }
 
-        public override string ToString()
+        internal Vehicle(string RegNum, uint NrOfwheels)
         {
-            return $"RegNumber: {RegNr}, Color: {Color}, Wheel: {Wheels}";
+            regnum = RegNum;
+            nrOfwheels = NrOfwheels;
         }
+
 
 
 

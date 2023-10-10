@@ -2,12 +2,20 @@
 {
     internal class Boat : Vehicle
     {
-        public double Length { get; set; }
-        public Boat(string color, string regNr, int wheels, double length):base(color, regNr, wheels) => Length = length;
+        
+            private double lenght;
 
-        public override string ToString()
-        {
-            return base.ToString() + $"Length: {Length}";
-        }
+            public double Lenght
+            {
+                get { return lenght; }
+                set { lenght = value; }
+            }
+
+            internal Boat(string RegNum, uint NrOfwheels, double Lenght) : base(RegNum, NrOfwheels)
+            {
+                lenght = Lenght;
+            }
+
+        
     }
 }

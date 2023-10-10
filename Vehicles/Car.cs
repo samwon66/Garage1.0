@@ -2,12 +2,16 @@
 {
     internal class Car : Vehicle
     {
-        public string FuelType { get; set; }
-        public Car(string color, string regNr, int wheels, string fuelType) : base(color, regNr, wheels) => FuelType = fuelType;
+        private string fuelType;
 
-        public override string ToString()
+        public string FuelType
         {
-            return base.ToString() + $"Fuel: {FuelType}";
+            get { return fuelType; }
+        }
+
+        public Car(string RegNum, uint NrOfwheels, string FuelType) : base(RegNum, NrOfwheels)
+        {
+            fuelType = FuelType;
         }
     }
 }

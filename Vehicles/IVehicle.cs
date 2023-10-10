@@ -2,8 +2,8 @@
 {
     public interface IVehicle
     {
-        public string RegNr { get; set; }
-        public string Color { get; set; }
-        public int Wheels { get; set; }
+        uint NrOfwheels { get; }
+        string RegNum { get; }
+        ConsoleColor Colour { get; set; }
     }
 }
