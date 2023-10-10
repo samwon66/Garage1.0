@@ -10,7 +10,7 @@
             do
             {
                 Print($"{message} ");
-                var input = Console.ReadLine();
+                var input = Console.ReadLine().ToUpper();
                 if (input != null)
                     answer = input;
 

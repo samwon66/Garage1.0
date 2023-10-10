@@ -29,7 +29,44 @@ namespace Garage1._0
 
         private void Start()
         {
-            throw new NotImplementedException();
+            inProgress = true;
+
+            do
+            {
+                string input = ui.GetStringInput(ShowMainMenu());
+                switch (input)
+                {
+                    case "1":
+                        break;
+
+                    case "2":
+                        break;
+
+                    case "3":
+                        break;
+
+                    case "4":
+                        break;
+
+                    case "Q":
+                        inProgress = false;
+                        break;
+
+                    default:
+                        ui.Print("Please enter a valid input (1, 2, 3, 4, Q)");
+                        break;
+                }
+            }
+            while (inProgress);
+        }
+
+        private string ShowMainMenu()
+        {
+            return ("\nPlease choose what you want to do with your garage." +
+                    "\n1. Park a vehicle" + 
+                    "\n2. Unpark a vehicle" + 
+                    "\n3. List all vehicles in the garage" + "" +
+                    "\nQ. Quit");
         }
 
         private void Initialize()
