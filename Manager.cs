@@ -68,17 +68,81 @@ namespace Garage1._0
 
         private void FindByProperties()
         {
-            throw new NotImplementedException();
+            if (handler.CheckIfEmptyGarage() == true) 
+            {
+                ui.Print("Sorry, your garage is empty.");
+                return;
+            }
+
+            string type = "";
+            bool isRunning = false;
+            string answer = ui.GetStringInput("Do you want to find vehicle by type? (yes/no)");
+            do
+            {
+                if (answer.ToLower() == "yes")
+                {
+                    var vehicleTypes = new Dictionary<int, string>
+                    {
+                        {1, "airplane" },
+                        {2, "boat" },
+                        {3, "bus" },
+                        {4, "car" },
+                        {5, "motorcycle" }
+                    };
+
+                    ui.Print("Select what type of vehicle you want to find (1, 2, 3, 4,5)");
+
+                    foreach (var vehicleType in vehicleTypes)
+                    {
+                        ui.Print($"{vehicleType.Key}: {vehicleType.Value}");
+                    }
+
+                    int inputNumber = ui.GetIntInput("");
+                    while (inputNumber <= 0 || inputNumber > vehicleTypes.Count)
+                    {
+                        ui.Print("That was a invalid input, please enter a valid number. (1, 2, 3, 4, 5)");
+                        inputNumber = ui.GetIntInput("");
+                    }
+                    type = vehicleTypes[inputNumber];
+                    isRunning = false;
+                }
+                else if (answer.ToLower() == "no")
+                {
+                    type = "x";
+                    isRunning = false;
+                }
+                else
+                {
+                    answer = ui.GetStringInput("That was not a valid input, please enter yes/no.");
+                    isRunning = true;
+                }
+
+            }
+            while (isRunning == true);
+
+
+            //ToDO: Add more properties choice
         }
 
+        
         private void FindByRegNo()
         {
-            throw new NotImplementedException();
+            if (handler.CheckIfEmptyGarage() == true)
+            {
+                ui.Print("Sorry, the garage is empty.");
+                return;
+            }
+
+            string inputRegNo = ui.GetStringInput("Enter the registration number of the vehicle you want to find: ");
+            string vehicleFound = handler.FindVehicleByRegNo(inputRegNo);
+            ui.Print(vehicleFound);
         }
 
         private void ListVehicleTypesAndAmount()
         {
-            throw new NotImplementedException();
+            ui.Print("Amount of each type of vehicle: \n");
+            string typeAndAmount = handler.GetNoOfEachType();
+            ui.Print(typeAndAmount);
         }
 
         private void UnParkVehicle()
@@ -200,10 +264,12 @@ namespace Garage1._0
             string vehiclesInGarage = handler.ListAllVehiclesInGarage();
             ui.Print(vehiclesInGarage);
             ui.Print($"Number of empty parking spaces left in your garage is {handler.GetNoOfSpacesLeft()}\n");
+            ui.GetStringInput("");
         }
 
         private string ShowMainMenu()
         {
+            ui.Clear();
             return ("\nPlease choose what you want to do with your garage." +
                     "\n1. Park a vehicle" + 
                     "\n2. Unpark a vehicle" + 
@@ -230,7 +296,7 @@ namespace Garage1._0
                 answer = ui.GetStringInput("Invalid input, please try again!");
             }
 
-            if (answer.ToLower() != "yes")
+            if (answer.ToLower() == "yes")
                 handler.SeedData();
         }
 

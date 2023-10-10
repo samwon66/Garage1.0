@@ -60,5 +60,10 @@
             text += noOfWheels == -1 ? "\".\n" : $"with {noOfWheels} wheels\"\n";
             Console.WriteLine(text);
         }
+
+        public void Clear()
+        {
+            Console.Clear();
+        }
     }
 }

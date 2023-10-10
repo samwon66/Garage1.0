@@ -2,6 +2,7 @@
 {
     public interface IUI
     {
+        void Clear();
         int GetIntInput(string message);
         string GetStringInput(string message);
         void Print(string message);
