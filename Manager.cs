@@ -89,7 +89,25 @@ namespace Garage1._0
 
         private void UnParkVehicle()
         {
-            throw new NotImplementedException();
+            if (handler.CheckIfEmptyGarage() == true) 
+            {
+                ui.Print("Sorry, the garage is empty.");
+                return;
+            }
+
+            ui.Print("Which vehicle in the list you want to unpark? ");
+            string vehiclesInGarage = handler.ListAllVehiclesInGarage();
+            ui.Print(vehiclesInGarage);
+            int inputNumber = ui.GetIntInput("");
+
+            while (inputNumber <= 0 || inputNumber > handler.GetNoOfVehiclesParked())
+            {
+                ui.Print("That was an invalid input, please try again with a valid number.");
+                inputNumber = ui.GetIntInput("");
+            }
+
+            if (handler.UnparkVehicle(inputNumber - 1) == true)
+                ui.Print("Your vehicle was unparked.");
         }
 
         private void ParkVehicle()
@@ -184,7 +202,6 @@ namespace Garage1._0
 
         private void ListVehicles()
         {
-            //ToDO: Add info of capacity and no of vehicles?
             ui.Print("\nHere are the vehicles you have parked in the garage now.");
             string vehiclesInGarage = handler.ListAllVehiclesInGarage();
             ui.Print(vehiclesInGarage);
