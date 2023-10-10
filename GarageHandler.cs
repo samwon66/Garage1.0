@@ -21,7 +21,15 @@ namespace Garage1._0
 
         public bool CheckRegNoBeforeAdding(string inputRegNo)
         {
-            throw new NotImplementedException();
+            bool isExisting;
+
+            var q = garage.Where(v => v?.RegNo.ToUpper() == inputRegNo.ToUpper());
+            if (q.Count() == 0)
+                isExisting = false; 
+            else 
+                isExisting = true;
+
+            return isExisting;
         }
 
         public void CreateGarage(int capacity)
@@ -47,17 +55,24 @@ namespace Garage1._0
 
         public int GetNoOfSpacesLeft()
         {
-            throw new NotImplementedException();
+            return garage.NoOfSpacesLeft;
         }
 
         public int GetNoOfVehiclesParked()
         {
-            throw new NotImplementedException();
+            return garage.NoOfVehiclesParked;
         }
 
         public string ListAllVehiclesInGarage()
         {
-            throw new NotImplementedException();
+            string result = "";
+            int i = 1;
+            foreach (Vehicle item in garage)
+            {
+                result += ($"{i}. {item.ToString()}\n");
+                i++;
+            }
+            return result;
         }
 
         public bool ParkAirplane(string color, int noOfWheels, string regNo, int numberOfEngines)
@@ -107,23 +122,27 @@ namespace Garage1._0
 
         public void SeedData()
         {
-            ParkBoat(color: "white", noOfWheels: 0, regNo: "SEA0101", length: 32);
-            ParkAirplane(color: "red", noOfWheels: 3, regNo: "SKY123", numberOfEngines: 2);
-            ParkMotorcycle(color: "black", noOfWheels: 3, regNo: "ACC900", cylinderVolume: 1000);
+            ParkBoat(color: "white", noOfWheels: 0, regNo: "AEC0101", length: 32);
+            ParkAirplane(color: "red", noOfWheels: 3, regNo: "YKS123", numberOfEngines: 2);
+            ParkMotorcycle(color: "black", noOfWheels: 3, regNo: "ACH900", cylinderVolume: 1000);
             ParkBoat(color: "red", noOfWheels: 0, regNo: "SEA002", length: 25);
             ParkCar(color: "white", noOfWheels: 4, regNo: "CAR001", fuelType: "diesel");
-            ParkAirplane(color: "black", noOfWheels: 3, regNo: "SKY222", numberOfEngines: 1);
-            ParkBus(color: "green", noOfWheels: 4, regNo: "BUS001", noOfSeats: 40);
-            ParkMotorcycle(color: "yellow", noOfWheels: 2, regNo: "ACC800", cylinderVolume: 850);
+            ParkAirplane(color: "black", noOfWheels: 3, regNo: "LKR222", numberOfEngines: 1);
+            ParkBus(color: "green", noOfWheels: 4, regNo: "UUS001", noOfSeats: 40);
+            ParkMotorcycle(color: "yellow", noOfWheels: 2, regNo: "SCL800", cylinderVolume: 850);
             ParkCar(color: "red", noOfWheels: 4, regNo: "XGA492", fuelType: "gasoline");
-            ParkCar(color: "black", noOfWheels: 4, regNo: "CAR002", fuelType: "electric");
-            ParkBus(color: "yellow", noOfWheels: 4, regNo: "BUS002", noOfSeats: 50);
-            ParkMotorcycle(color: "yellow", noOfWheels: 3, regNo: "ACC700", cylinderVolume: 900);
+            ParkCar(color: "black", noOfWheels: 4, regNo: "CER002", fuelType: "electric");
+            ParkBus(color: "yellow", noOfWheels: 4, regNo: "BLS002", noOfSeats: 50);
+            ParkMotorcycle(color: "yellow", noOfWheels: 3, regNo: "AOJ700", cylinderVolume: 900);
         }
 
         public bool UnparkVehicle(int index)
         {
-            throw new NotImplementedException();
+            if (garage.Remove(index) == true)
+                return true;
+
+            else
+                return false;
         }
     }
 }

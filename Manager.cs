@@ -37,15 +37,27 @@ namespace Garage1._0
                 switch (input)
                 {
                     case "1":
+                        ParkVehicle();
                         break;
 
                     case "2":
+                        UnParkVehicle();
                         break;
 
                     case "3":
+                        ListVehicles();
                         break;
 
                     case "4":
+                        ListVehicleTypesAndAmount();
+                        break;
+
+                    case "5":
+                        FindByRegNo();
+                        break;
+
+                    case "6":
+                        FindByProperties();
                         break;
 
                     case "Q":
@@ -60,12 +72,134 @@ namespace Garage1._0
             while (inProgress);
         }
 
+        private void FindByProperties()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void FindByRegNo()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ListVehicleTypesAndAmount()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void UnParkVehicle()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ParkVehicle()
+        {
+            bool isFull = handler.CheckIfFullGarage();
+            if (isFull)
+            {
+                ui.Print("Sorry, your garage is already full.");
+                return;
+            }
+            {
+                int validVehicle = 5;
+                int vehicleType = ui.GetIntInput("Select the type of vehicle you want to park : (1, 2, 3, 4, 5)" 
+                    + "\n1. Airplane" 
+                    + "\n2. Boat" 
+                    + "\n3. Bus" 
+                    + "\n4. Car" 
+                    + "\n5. Motorcycle");
+
+                while (vehicleType <= 0 || vehicleType > validVehicle)
+                {
+                    ui.Print("That was a invalid type of vehicle, please try again. (1,2,3,4,5)");
+                    vehicleType = ui.GetIntInput("");
+                }
+
+                string color = ui.GetStringInput("Color: ");
+                int noOfWheels = ui.GetIntInput("Numbers of wheels: ");
+                while (noOfWheels < 0)
+                {
+                    noOfWheels = ui.GetIntInput("Number of wheels can not be negative, please try again.");
+                }
+
+                string regNo;
+                bool isExisting = false;
+                do
+                {
+                    regNo = ui.GetStringInput("Reg. number: ");
+                    if (handler.CheckRegNoBeforeAdding(regNo) == true)
+                    {
+                        ui.Print("The reg. number already exists. Please try again.");
+                        isExisting = true;
+                    }
+                    else
+                        isExisting = false;
+                }
+                while (isExisting);
+
+                switch (vehicleType)
+                {
+                    case 1:
+                        int noOfEngines = ui.GetIntInput("Number of engines: ");
+
+                        if (handler.ParkAirplane(color, noOfWheels, regNo, noOfEngines) == true)
+                            ui.PrintAddSuceed();
+                        break;
+
+                    case 2:
+                        int length = ui.GetIntInput("Length: ");
+
+                        if (handler.ParkBoat(color, noOfWheels, regNo, length) == true)
+                            ui.PrintAddSuceed();
+                        break;
+
+                    case 3:
+                        int noOfSeats = ui.GetIntInput("Number of seats: ");
+
+                        if (handler.ParkBus(color, noOfWheels, regNo, noOfSeats) == true)
+                            ui.PrintAddSuceed();
+                        break;
+
+                    case 4:
+                        string fuelType = ui.GetStringInput("Fuel type?: ");
+
+                        if (handler.ParkCar(color, noOfWheels, regNo, fuelType) == true)
+                            ui.PrintAddSuceed();
+                        break;
+
+                    case 5:
+                        int cylinderVolume = ui.GetIntInput("Cylinder volume: ");
+
+                        if (handler.ParkMotorcycle(color, noOfWheels, regNo, cylinderVolume) == true)
+                            ui.PrintAddSuceed();
+                        break;
+
+                    default:
+                        ui.Print("Please enter some valid input (1, 2, 3, 4, 5");
+                        break;
+                }
+
+            }
+        }
+
+        private void ListVehicles()
+        {
+            //ToDO: Add info of capacity and no of vehicles?
+            ui.Print("\nHere are the vehicles you have parked in the garage now.");
+            string vehiclesInGarage = handler.ListAllVehiclesInGarage();
+            ui.Print(vehiclesInGarage);
+            ui.Print($"Number of empty parking spaces left in your garage is {handler.GetNoOfSpacesLeft()}\n");
+        }
+
         private string ShowMainMenu()
         {
             return ("\nPlease choose what you want to do with your garage." +
                     "\n1. Park a vehicle" + 
                     "\n2. Unpark a vehicle" + 
-                    "\n3. List all vehicles in the garage" + "" +
+                    "\n3. List all vehicles in the garage" + 
+                    "\n4. List vehicle types and amount" + 
+                    "\n5. Find a vehicle by registration number" + 
+                    "\n6. Find vehicle by one or more properties" +
                     "\nQ. Quit");
         }
 

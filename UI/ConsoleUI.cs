@@ -10,18 +10,14 @@
             do
             {
                 Print($"{message} ");
-                var input = Console.ReadLine().ToUpper();
+                var input = Console.ReadLine()!.ToUpper();
                 if (input != null)
                     answer = input;
 
                 if (string.IsNullOrEmpty(answer))
-                {
-                    Print($"You must enter a valid input. Please try again.");
-                }
+                        Print($"You must enter a valid input. Please try again.");
                 else
-                {
                     success = true;
-                }
 
             } while (!success);
 
@@ -55,7 +51,7 @@
             Console.WriteLine("Your vehicle was sucessfully parked in the garage!");
         }
 
-        public void PrintPropertyMessage(string type, string color, int noOfWheels)  // Prints a massage based on search criteria e.g. "All yellow motorcycles with 3 wheels"
+        public void PrintPropertyMessage(string type, string color, int noOfWheels)  
         {
             Console.Clear();
             string text = "Here is the result from your search criteria \"All ";
