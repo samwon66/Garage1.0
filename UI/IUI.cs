@@ -1,6 +1,6 @@
 ﻿namespace Garage1._0.UI
 {
-    internal interface IUI
+    public interface IUI
     {
         int GetIntInput(string message);
         string GetStringInput(string message);
