@@ -89,6 +89,18 @@ namespace Garage1._0
             return success;
         }
 
+        internal bool AddVehicle(IVehicle vehicle)
+        {
+            bool result = garage.AddVehicle(vehicle);
+            return result;
+        }
+
+        internal bool RemoveVehicle(IVehicle vehicle)
+        {
+            bool result = garage.RemoveVehicle(vehicle);
+            return result;
+        }
+
         private bool ValidateNrOfWheels(uint nrOfWheels, string Type)
         {
             switch (Type.ToLower())
