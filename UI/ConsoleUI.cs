@@ -1,88 +1,68 @@
-﻿using Garage1._0.Vehicles;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Garage1._0.UI
+﻿namespace Garage1._0.UI
 {
     public class ConsoleUI : IUI
     {
-        public void DrawList(IVehicle[] vehicles)
+        public string GetStringInput(string message)
         {
-            throw new NotImplementedException();
+            string answer = string.Empty;
+            bool success = false;
+
+            do
+            {
+                Print($"{message} ");
+                var input = Console.ReadLine();
+                if (input != null)
+                    answer = input;
+
+                if (string.IsNullOrEmpty(answer))
+                {
+                    Print($"You must enter a valid input. Please try again.");
+                }
+                else
+                {
+                    success = true;
+                }
+
+            } while (!success);
+
+            return answer!;
         }
 
-        public void DrawMainMenu()
+        public int GetIntInput(string message)
+        {
+            bool isInt = false;
+            int answer;
+            do
+            {
+                string input = GetStringInput(message);
+
+                isInt = int.TryParse(input, out answer);
+                if (!isInt)
+                    Print($"That was not a valid input. Please try again.");
+            }
+            while (isInt == false);
+
+            return answer;
+        }
+
+        public void Print(string message)
+        {
+            Console.WriteLine(message);
+        }
+
+        public void PrintAddSuceed()
+        {
+            Console.WriteLine("Your vehicle was sucessfully parked in the garage!");
+        }
+
+        public void PrintPropertyMessage(string type, string color, int noOfWheels)  // Prints a massage based on search criteria e.g. "All yellow motorcycles with 3 wheels"
         {
             Console.Clear();
-            Console.WriteLine("\n Garage menu:\n" +
-                " -----------------------------\n" +
-                " 1. Populate garage\n" +
-                " 2. Add a vehicle\n" +
-                " 3. Remove a vehicle\n" +
-                " 4. Show a vehicles properties\n" +
-                " 5. List all vehicles\n" +
-                " 6. Show garage statistics\n" +
-                " 7. Query vehicles\n" +
-                " Q. Quit");
-        }
-
-        public void DrawSetupMessage()
-        {
-            throw new NotImplementedException();
-        }
-
-        public string GetMenuKey()
-        {
-            Console.Write(" ");
-            string key = Console.ReadKey(intercept: true).KeyChar.ToString();
-            return key;
-        }
-
-        public void Pause()
-        {
-            Console.Write(" ");
-            Console.ReadKey(intercept: true);
-        }
-
-        public string Prompt(string Message)
-        {
-            Console.Write(Message);
-            return Console.ReadLine();
-        }
-
-        public void ShowErrorMessage(string errorMessage)
-        {
-            Console.WriteLine(errorMessage);
-            Console.Write(" ");
-        }
-
-        public void WriteCapacity(uint Capacity, uint Ocupied, uint Available)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void WriteMessage(string Message)
-        {
-            Console.WriteLine(Message);
-        }
-
-        public void WriteTypeCount((Type, uint)[] typeCounts)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void WriteVehicle(IVehicle vehicle)
-        {
-            string output = " " +
-                vehicle.GetType().Name + new string(' ', 12 - vehicle.GetType().Name.Length) +
-                vehicle.RegNum + "   " +
-                vehicle.NrOfwheels + "      " +
-                vehicle.Colour;
-
-            Console.WriteLine(output);
+            string text = "Here is the result from your search criteria \"All ";
+            text += color == "X" ? "" : $"{color} ";
+            text += type == "X" ? "vehicles " : $"{type}s ";
+            text += noOfWheels == -1 ? "\".\n" : $"with {noOfWheels} wheels\"\n";
+            Console.WriteLine(text);
         }
     }
 }

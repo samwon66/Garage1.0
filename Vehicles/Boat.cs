@@ -2,20 +2,19 @@
 {
     internal class Boat : Vehicle
     {
-        
-            private double lenght;
 
-            public double Lenght
-            {
-                get { return lenght; }
-                set { lenght = value; }
-            }
+        public int Length { get; set; }
 
-            internal Boat(string RegNum, uint NrOfwheels, double Lenght) : base(RegNum, NrOfwheels)
-            {
-                lenght = Lenght;
-            }
+        public Boat(string color, int noOfWheels, string regNo, int length) : base(color, noOfWheels, regNo)
+        {
+            Length = length;
+        }
 
-        
+        public override string ToString()
+        {
+            return $"{this.GetType().Name}\t\tReg.no:{RegNo}\tColor:{Color}\tNo of wheels:{NoOfWheels}\tLength:{Length}";
+        }
+
+
     }
 }

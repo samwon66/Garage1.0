@@ -2,28 +2,22 @@
 {
     internal class Vehicle : IVehicle
     {
-        private string regnum;
-        private uint nrOfwheels;
-        private ConsoleColor colour;
+        public string Color { get; set; }
+        public int NoOfWheels { get; set; }
 
-        public string RegNum
+        public string RegNo { get; set; }
+
+
+        public Vehicle(string color, int noOfWheels, string regNo)
         {
-            get { return regnum; }
-        }
-        public uint NrOfwheels
-        {
-            get => nrOfwheels;
-        }
-        public ConsoleColor Colour
-        {
-            get { return colour; }
-            set { colour = value; }
+            this.Color = color;
+            this.NoOfWheels = noOfWheels;
+            this.RegNo = regNo;
         }
 
-        internal Vehicle(string RegNum, uint NrOfwheels)
+        public override string ToString()
         {
-            regnum = RegNum;
-            nrOfwheels = NrOfwheels;
+            return $"{this.GetType().Name}\tReg.no:{RegNo}\tColor:{Color}\tNo of wheels:{NoOfWheels}";
         }
 
 

@@ -2,8 +2,10 @@
 {
     public interface IVehicle
     {
-        uint NrOfwheels { get; }
-        string RegNum { get; }
-        ConsoleColor Colour { get; set; }
+        string Color { get; set; }
+        int NoOfWheels { get; set; }
+        string RegNo { get; set; }
+
+        string ToString();
     }
 }

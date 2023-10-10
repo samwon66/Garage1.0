@@ -2,16 +2,16 @@
 {
     internal class Motorcycle : Vehicle
     {
-        private double cylinderVolume;
+        public int CylinderVolume { get; set; }
 
-        public double CylinderVolume
+        public Motorcycle(string color, int noOfWheels, string regNo, int cylinderVolume) : base(color, noOfWheels, regNo)
         {
-            get { return cylinderVolume; }
+            CylinderVolume = cylinderVolume;
         }
 
-        internal Motorcycle(string RegNum, uint NrOfwheels, double CylinderVolume) : base(RegNum, NrOfwheels)
+        public override string ToString()
         {
-            cylinderVolume = CylinderVolume;
+            return base.ToString() + "\tCylinder volume:" + CylinderVolume;
         }
     }
 }
