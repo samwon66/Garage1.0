@@ -45,12 +45,38 @@ namespace Garage1._0
 
         public string FindVehicleByRegNo(string inputRegNo)
         {
-            throw new NotImplementedException();
+            string result = "";
+            var q = garage.Where(v => v?.RegNo.ToUpper() == inputRegNo.ToUpper());
+
+            if (q.Count() == 0)
+            {
+                result = $"Sorry, could not find any vehicle with reg. no {inputRegNo}.";
+            }
+            else
+            {
+                result = $"Here is the vehicle with reg. no {inputRegNo}.";
+                foreach ( var v in q)
+                {
+                    result += $"{v.ToString()} ";
+                }
+            }
+            return result ;
         }
 
         public string GetNoOfEachType()
         {
-            throw new NotImplementedException();
+            string result = "";
+            var vehicleTypeList = garage.GroupBy(v => v.GetType().Name).Select(v => new
+            {
+                type = v.Key,
+                count = v.Count()
+            }).ToList();
+
+            foreach (var v in vehicleTypeList)
+            {
+                result += $"{v.type}: {v.count}\n";
+            }
+            return result;
         }
 
         public int GetNoOfSpacesLeft()
