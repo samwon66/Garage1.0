@@ -76,7 +76,13 @@ namespace Garage1._0.UI
 
         public void WriteVehicle(IVehicle vehicle)
         {
-            throw new NotImplementedException();
+            string output = " " +
+                vehicle.GetType().Name + new string(' ', 12 - vehicle.GetType().Name.Length) +
+                vehicle.RegNum + "   " +
+                vehicle.NrOfwheels + "      " +
+                vehicle.Colour;
+
+            Console.WriteLine(output);
         }
     }
 }

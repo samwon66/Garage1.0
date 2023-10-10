@@ -6,7 +6,7 @@ using System.Numerics;
 
 namespace Garage1._0
 {
-    public class Garage<T> : /*IEnumerable<T>,*/ IGarage<T> where T : IVehicle
+    public class Garage<T> : IGarage<T> where T : IVehicle
     {
         private T[] vehicles;
         private uint capacity;

@@ -9,6 +9,8 @@ namespace Garage1._0
 {
     internal interface IGarage<T> : IEnumerable<T> where T : IVehicle
     {
+        bool AddVehicle(Car car);
+
         public interface IGarage<T> : IEnumerable<T> where T : IVehicle
         {
             uint Capacity { get; }
