@@ -25,6 +25,46 @@ namespace Garage1._0
             garageCapacity = NrOfPlaces;
         }
 
+
+
+
+
+        internal bool AddAirplane(string RegNum, uint NrOfwheels, uint NrOfEngines, ConsoleColor colour = ConsoleColor.Black)
+        {
+            bool success = false;
+            Airplane airplane = new Airplane(RegNum, NrOfwheels, NrOfEngines);
+            airplane.Colour = colour;
+
+            if (ValidateRegNum(RegNum) && ValidateNrOfWheels(NrOfwheels, airplane.GetType().Name))
+                success = garage.AddVehicle(airplane);
+
+            return success;
+        }
+        
+        internal bool AddBoat(string RegNum, uint NrOfwheels, double Lenght, ConsoleColor colour = ConsoleColor.Black)
+        {
+            bool success = false;
+            Boat boat = new Boat(RegNum, NrOfwheels, Lenght);
+            boat.Colour = colour;
+
+            if (ValidateRegNum(RegNum) && ValidateNrOfWheels(NrOfwheels, boat.GetType().Name))
+                success = garage.AddVehicle(boat);
+
+            return success;
+        }
+
+        internal bool AddBus(string RegNum, uint NrOfwheels, uint NrOfSeats, ConsoleColor colour = ConsoleColor.Black)
+        {
+            bool success = false;
+            Bus bus = new Bus(RegNum, NrOfwheels, NrOfSeats);
+            bus.Colour = colour;
+
+            if (ValidateRegNum(RegNum) && ValidateNrOfWheels(NrOfwheels, bus.GetType().Name))
+                success = garage.AddVehicle(bus);
+
+            return success;
+        }
+        
         internal bool AddCar(string RegNum, uint NrOfwheels, string FuelType, ConsoleColor colour = ConsoleColor.Black)
         {
             bool success = false;
@@ -33,6 +73,18 @@ namespace Garage1._0
 
             if (ValidateRegNum(RegNum) && ValidateNrOfWheels(NrOfwheels, car.GetType().Name))
                 success = garage.AddVehicle(car);
+
+            return success;
+        }
+
+        internal bool AddMotorcycle(string RegNum, uint NrOfwheels, double CylinderVolume, ConsoleColor colour = ConsoleColor.Black)
+        {
+            bool success = false;
+            Motorcycle mc = new Motorcycle(RegNum, NrOfwheels, CylinderVolume);
+            mc.Colour = colour;
+
+            if (ValidateRegNum(RegNum) && ValidateNrOfWheels(NrOfwheels, mc.GetType().Name))
+                success = garage.AddVehicle(mc);
 
             return success;
         }

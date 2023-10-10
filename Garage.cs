@@ -87,10 +87,10 @@ namespace Garage1._0
             }
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
+        //IEnumerator IEnumerable.GetEnumerator()
+        //{
+        //    return GetEnumerator();
+        //}
     }
 
 
