@@ -11,14 +11,14 @@ namespace Garage1._0.UI
     {
         public string GetMenuKey()
         {
-            Console.Write(" ");
-            return Console.ReadKey(intercept: true).KeyChar.ToString();
+            //Console.Write(" ");
+            return Console.ReadLine().ToUpper();
         }
 
         public void Pause()
         {
             Console.WriteLine(" ");
-            Console.ReadKey(intercept: true);
+            Console.ReadLine();
         }
 
         public void PrintErrorMessage(string errorMessage)

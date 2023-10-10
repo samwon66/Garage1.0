@@ -27,7 +27,7 @@ namespace Garage1._0
             {
                 ui.PrintMainMenu();
                 DoChoice();
-                if(isRunning) 
+                if (isRunning)
                     ui.Pause();
             }
             while(isRunning);
@@ -36,13 +36,29 @@ namespace Garage1._0
         internal void DoChoice()
         {
             string choice = GetMenuChoice();
-            var menu = new Dictionary<string, Action>
+            switch(choice)
             {
-                { "1", FillGarageWithVehicles }, 
-                { "2", AddAVehicle },
-                { "3", RemoveAVehicle },
-                { "Q", Quit }
-            };
+                case "1":
+                    FillGarageWithVehicles();
+                    break;
+
+                case "2":
+                    break;
+
+                case "3":
+                    break;
+
+                case "Q":
+                    Quit();
+                    break;
+            }
+            //var menu = new Dictionary<string, Action>
+            //{
+            //    { "1", FillGarageWithVehicles }, 
+            //    { "2", AddAVehicle },
+            //    { "3", RemoveAVehicle },
+            //    { "Q", Quit }
+            //};
         }
 
         private void RemoveAVehicle()
@@ -107,7 +123,7 @@ namespace Garage1._0
 
         private void Quit()
         {
-            Environment.Exit(0);
+            isRunning = false;
         }
 
         private string GetMenuChoice()
